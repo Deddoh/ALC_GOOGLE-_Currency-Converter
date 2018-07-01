@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free_Currency_Converter @deddoh84 </title>
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro:900|Yantramanav:400,500,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="main.css" />
+    <script src="main.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script type="text/javascript" src="bootstrap-3.3.7-dist/js/jquery.js"></script>
+	<script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+	<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
+	<link rel="stylesheet" href="bootstrap/material-kit-html-v2.0.3/assets/css/material-kit.css?v=2.0.3">
+	
+</head>
+<body>
+	<div class="page-header header-filter clear-filter" style="background-image: url(images/ps/qpgh.jpg); filter: blue;">
+		<div class="container">
+			<div class="col-md-8">
+				<div class="brand">
+					<h2>Welcome to the free currency converter</h2>
+					<h5 class="text-info"><i>we help plan your money at the comfort of your home</i></h5>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	<div class="main main-raised" style="background: #ffb380;">
+		<div class="section section-basic">
+			<div class="container">
+				<div class="title">
+			<h1>	What is a currency converter</h1>	
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="card-blog">
+								<div class="card-header">
+									<img src="images/city-profile.jpg" width="300" height="200">
+								</div>
+								<div class="card-body">
+									<h4 class="category text-info">The currency converter</h4>
+									<h3 class="card-title">WELCOME</h3>
+									<p class="card-description">The currency converter in an application that helps you be your own accountant where by you can convert the amount you have to another currency at the comfort of your home</p>
+									
+								</div>
+
+								
+							</div>
+							
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<form class="form-group">
+									<label for="amount" class="bmd-label-floating">The amount you want to convert</label>
+									<input id="value1" type="number" name="amount" class="form-control" required="required">
+									<label for="from" class="control-label bmd-label-floating">From which currency</label>
+               <select id="currencies" name="from" class="form-control" required="required">
+                                        <option value="disabled"  selected></option>
+                                        <option value="USD" selected>USD</option>
+										<option value="YEN" >YEN</option>
+										<option value="EURO" >EURO</option>
+										<option value="KES" >KES</option>
+										<option value="RUP" >RUP</option>
+										<option value="AED" >AED</option>
+										<option value="AFN" >AFN</option>
+										<option value="ALL" >ALL</option>
+										<option value="AMD" >AMD</option>
+										<option value="AOA" >AOA</option>
+										<option value="ARS" >ARS</option>
+										<option value="AUD" >AUD</option>
+										<option value="AZN" >AZN</option>
+										
+                  </select>
+            
+
+
+									
+									<label class="control-label bmd-label-floating" for="state">To which currency</label>
+									<select id="currencies" name="to" class="form-control" required="required">
+										<option value="USD" selected>USD</option>
+										<option value="YEN" >YEN</option>
+										<option value="EURO" >EURO</option>
+										<option value="KES" >KES</option>
+										<option value="RUP" >RUP</option>
+										<option value="AED" >AED</option>
+										<option value="AFN" >AFN</option>
+										<option value="ALL" >ALL</option>
+										<option value="AMD" >AMD</option>
+										<option value="AOA" >AOA</option>
+										<option value="ARS" >ARS</option>
+										<option value="AUD" >AUD</option>
+										<option value="AZN" >AZN</option>
+										
+									</select>
+									<label for="result" class="control-label">Result</label>
+									<input type="number" name="result" class="form-control" readonly="readonly" >
+									<br>
+									
+									<center><button type="submit" name="submit" class="sum btn-success btn-large" onclick="summation()">Convert</button></center>
+								</form>
+								
+							</div>
+							
+						</div>
+							
+					</div>
+
+					
+				</div>
+		
+			</div>
+				
+		</div>
+			
+	</div>
+	<script src="script.js">      
+      </script>
+
+      <script>
+        summation = () => {
+          let val1 = document.getElementById("countries").value;
+          let val2 = document.getElementById("currencies").value;
+          var request = new XMLHttpRequest();
+          request.open('GET', `https://free.currencyconverterapi.com/api/v5/convert?q=$val1_${toVar}&compact=ultra`, true);
+          request.onload = function () {
+            // Begin accessing JSON data here
+            var data = JSON.parse(this.response);
+            if (request.status >= 200 && request.status < 400) {
+              console.log(data);
+              const start = document.getElementById("currencies").value;
+              if (start) {
+                document.getElementById("countries").value = data[`${val1}_${val2}`] * start;
+              }
+              else {
+                document.getElementById("value2").value = data[`${val2}_${val1}`];
+              }
+            }
+            else {
+              console.log("An error occurred.");
+            }
+          }
+
+          request.send();
+        }
+
+
+      </script>
+		
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
